@@ -1,0 +1,63 @@
+{% load static %} 
+
+        <script type="text/javascript" src="{% static 'product-filter.js' %}"></script>
+                    <!-- Править фильтр только в этом файле теперь!              -->
+                    <!-- Фильтр цены -->
+                    <div class="card mb-4 shadow-none border-0">
+                        <h6 class="card-header" style="border-bottom: 0px; background-color: white; font-size: 14px;">Цена ({{minMaxPrice.price__min}}-{{minMaxPrice.price__max}})</h6>
+                        <div class="list-group list-group-flush" style="height: 100px;">
+                            <li class="list-group-item form-range mb-5" style="line-height: 0.9em; border: 0px; font-size: 12px;">
+                                <!-- <input type="range" class="form-range" value="{{minMaxPrice.price__max}}" min="{{minMaxPrice.price__min}}" max="{{minMaxPrice.price__max}}" id="rangeInput" oninput="maxPrice.value=this.value"/> -->
+                                Максимум: <input type="number" min="10" value="{{minMaxPrice.price__max}}" onkeyup="rangeInput.value=this.value" id="maxPrice" min="{{minMaxPrice.price__min}}" max="{{minMaxPrice.price__max}}"/>
+                                <button id="priceFilterBtn" class="btn btn-info btn-sm mb-10 mt-2">Фильтр</button>
+                            </li>
+                        </div>
+                    </div>
+                <!-- Фильтр разделов -->
+                    <div class="card mb-4 mt-4 shadow-none border-0">
+                        <h6 class="card-header" style="font-weight: bold; border-bottom: 0px; background-color: white; font-size: 14px;">Категория</h6>
+                        <!-- <div class="list-group list-group-flush"> -->
+                        <div class="form-check">
+                            {% for cat in cats %}
+                            <li class="list-group-item" style=" border: 0px;">
+                                <input class="filter-checkbox form-check-input rounded-3" data-filter="category" value="{{cat.category__id}}" type="checkbox" />
+                                <label class="form-check-label" style="font-size: 13px;">&nbsp;{{cat.category__title}}</label>
+                            </li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                <!-- Фильтр брендов -->
+                    <div class="card mb-4 shadow-none border-0">
+                        <h6 class="card-header" style="font-weight: bold; border-bottom: 0px; background-color: white; font-size: 14px;">Бренд</h6>
+                        <div class="form-check">
+                            {% for brand in brands %}
+                            <li class="list-group-item" style="border: 0px;">
+                                <input class="filter-checkbox form-check-input rounded-3" data-filter="brand" value="{{brand.brand__id}}" type="checkbox" />
+                                <label class="form-check-label" style="font-size: 13px;">&nbsp;{{brand.brand__title}}</label>
+                            </li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                <!-- Фильтр цветов -->
+                    <div class="card mb-4 shadow-none border-0">
+                        <h6 class="card-header" style="font-weight: bold; border-bottom: 0px; background-color: white; font-size: 14px;">Цвет</h6>
+                        <div class="form-check">
+                                {% for color in colors %}
+                                <li class="list-group-item" style="border: 0px;">
+                                    <input class="filter-checkbox form-check-input rounded-3" data-filter="color" value="{{color.color__id}}" type="checkbox" />&nbsp;
+                                    <button class="btn" style="background-color: {{color.color__image}}; margin-bottom: 5px;"></button>
+                                </li>
+                                {% endfor %}
+                        </div>
+                    </div>
+                <!-- Фильтр размеров -->
+                    <div class="card mb-4 shadow-none border-0">
+                        <h6 class="card-header" style="font-weight: bold; border-bottom: 0px; background-color: white; font-size: 14px;">Размер</h6>
+                        <div class="form-check">
+                                {% for size in sizes %}
+                                    <li class="list-group-item" style="border: 0px;">
+                                        <input class="filter-checkbox form-check-input rounded-3" data-filter="size" value="{{size.size__id}}" type="checkbox" />
+                                        <label class="form-check-label" style="font-size: 13px;">&nbsp;{{size.size__title}}</label></li>
+                                {% endfor %}
+                        </div>
+                    </div>

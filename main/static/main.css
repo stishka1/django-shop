@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+html {
+    /* width: 70%;
+    margin: auto; */
+    /* min-width: 640px; */
+    /* justify-content: center; */
+    background: hsl(0, 0%, 100%);
+}
+
+.main-container {
+  max-width: 1400px;
+  margin: 0px auto;
+  padding: 0px 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 1400px) {
+  .main-container{
+    max-width: 970px;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-container{
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-container{
+    max-width: none;
+  }
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+
+
+
+
+
+/* .card, .title, .table, .col, .form-control, .btn, .text, .navbar, .product-price, .form-bg {
+  font-family: 'Roboto', sans-serif;
+} */
+
+.price-box, .cart-table, .coupon-group, .card-box {
+  box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+}
+
+.focused{
+	outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.card-body {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+/* #carousel-main {
+    box-shadow: 0 0 40px #000;
+} */
+
+/* main {
+    width: 85%;
+    margin: auto;
+    min-width: 640px;
+    justify-content: center;
+    background: hsl(0, 0%, 100%);
+} */
+
+.wrap-pic-w img {
+    width: 100%;
+    /* padding-right: 25px; */
+}
+
+/*[ Slick3 ]
+///////////////////////////////////////////////////////////
+*/
+
+/* .wrap-slick3-dots {
+    width: 14.5%;
+  }
+  
+  .slick3 {
+    width: 80.64%;
+  }
+  
+  .slick3-dots li {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .slick3-dots li img {
+    width: 100%;
+  }
+  
+  .slick3-dot-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    border: 3px solid transparent;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .slick3-dot-overlay:hover {
+    border: 3px solid #888888;
+  }
+  
+  .slick3-dots .slick-active .slick3-dot-overlay {
+    border: 3px solid #888888;
+  } */
+
+
+/* Страница входа */
+.errorlist {
+  color: red;
+}
+
+
+
+
+
+/* тест галереи */
+.branding {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+.branding img {
+  width: 50px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+.gallery__bg {
+  opacity: 0.5;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.gallery__bg img {
+  width: 105%;
+  height: 105%;
+  object-fit: cover;
+  object-position: center center;
+  filter: blur(5px);
+  position: absolute;
+  top: -2.5%;
+  left: -2.5%;
+  z-index: 2;
+}
+.gallery__bg img.fade-in {
+  z-index: 1;
+}
+.gallery__bg img.fade-out {
+  transition: opacity 400ms;
+  opacity: 0;
+}
+.gallery__search {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+.gallery__search label {
+  background: #333;
+  color: white;
+  padding: 11px 10px 10px;
+}
+.gallery__search input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  padding: 1px 6px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+.gallery__search input:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+.gallery__main {
+  position: relative;
+  z-index: 1;
+  margin: 0 75px 0 20px;
+  width: 520px;
+  max-width: calc(100% - 95px);
+}
+.gallery__core {
+  box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+.gallery__core img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: translateY(0);
+}
+.gallery__core img.slide-in {
+  top: 100%;
+}
+.gallery__core img.shift-up {
+  transition: transform 400ms;
+  transform: translateY(-100%);
+}
+.gallery__track {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  transform: translate(60px, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery__track__item {
+  width: 43px;
+  height: 43px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border-radius: 100%;
+  transition: transform 350ms;
+}
+.gallery__track__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.gallery__track__item:hover {
+  transform: scale(1.2);
+}
+.gallery__track__item.active {
+  width: 40px;
+  height: 40px;
+  border: 3px solid white;
+}
+
+
+
+
+
+
+
+
+
+.category-image {
+  max-width: 220px;
+  max-height: 220px;
+  object-fit: scale-down;
+}
+
+
+
+
+
+/* Утвержденная анимация галереи картинок на детальной странице товара */
+.product-image img {
+  width: 100%;
+  max-height: 500px;
+  }
+
+  .product-image img:hover {
+  
+    }
+
+.product-image {
+    width: auto;
+    display: block;
+    height: 52vh;
+    display: block;
+    margin: 0 0 0.75rem 0;
+    cursor: pointer;
+  }
+
+.image-list img{
+  width: 48px;
+  height: 48px;
+  object-fit: scale-down;
+  margin-bottom: 5px;
+  display: flex;
+  cursor: pointer;
+}
+
+.image-list img:hover {
+  border: 2px solid #23A8F2;
+}
+
+/* КОНЕЦ */
+
+
+
+
+
+.portfolio-menu{
+	/* text-align:center; */
+}
+.portfolio-menu ul li{
+	/* display:inline-block;
+	margin:0;
+	list-style:none;
+	padding:10px 15px;
+	cursor:pointer;
+	-webkit-transition:all 05s ease;
+	-moz-transition:all 05s ease;
+	-ms-transition:all 05s ease;
+	-o-transition:all 05s ease;
+	transition:all .5s ease; */
+}
+
+.portfolio-item{
+	/*width:100%;*/
+}
+.portfolio-item .item{
+	/*width:303px;*/
+	/* float:left;
+	margin-bottom:10px; */
+}
+
+
+/* ПЕРЕБОР КАРТИНОК ПО ДВИЖЕНИЮ МЫШКИ - БЕЗ ЗАХОДА В КАРТОЧКУ ТОВАРА */
+.hvr__images {
+  position: relative;
+}
+
+.hvr__sectors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.hvr__sector {
+  flex-grow: 1;
+}
+
+.images {
+  /* height: 230px;
+  width: 230px; */
+  display: flex;
+  overflow: hidden;
+
+}
+
+.image {
+  width: 230px;
+  height: 230px;
+  object-fit: scale-down;
+  display: block;
+}
+
+.hovertest:hover {
+
+}
+
+.hvr__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hvr__dot {
+  width: 5px;
+  height: 5px;
+  margin: 10px 2px 0;
+  border-radius: 50%;
+  background: #d6dbe0;
+}
+
+.hvr__dot--active {
+  background: rgb(4, 145, 51);
+}
+
+
+/* КОНЕЦ - ПЕРЕБОР КАРТИНОК ПО ДВИЖЕНИЮ МЫШКИ - БЕЗ ЗАХОДА В КАРТОЧКУ ТОВАРА */
+
+
+.box {
+  box-shadow: 0 6px 16px rgb(0 26 52 / 16%), 0 0 0 rgb(0 26 52 / 5%);
+;
+
+  
+  
+  /* min-height: 200px;
+  width: 50vw;
+  margin: 100px auto; */
+  background: white;
+  /* border-radius: 5px; */
+}

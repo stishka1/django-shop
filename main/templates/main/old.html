@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom rounded" style="background-color: #e5e9f3; color: #4C514C; font-size: 14px;">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-start">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'media/images/logo.jpg' %}" alt="Logo" width="140" height="30" class="d-inline-block align-text-top">
+                <!-- <span style="font-size: 20px; font-weight: bold;">Multi-Bee</span> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <ul class="navbar-nav d-flex">
+            <li class="nav-item" style="max-height: 48px;">
+                <a class="nav-link text-white" href="{% url 'product_list' %}">
+                    <figure class="figure">
+                            <i class="fa-solid fa-xl fa-bars-staggered ms-3" style="color: darkslategray;"></i>
+                            <figcaption class="figure-caption text-center" style="font-weight: bold;">Каталог</figcaption>
+                    </figure>
+                </a>
+            </li>
+        </ul>
+
+
+    <!-- Поиск -->
+            <!-- <form class="d-flex" action="/search">
+                <input name="q" class="form-control me-2 ms-5" type="search" placeholder="Я ищу..." aria-label="Search" style="width: 500px; font-size: 14px;">
+                <button class="btn btn-outline" type="submit" style="background-color: white; border: dashed 1px #4C514C; font-size: 12px;"><i class="fa-solid fa-lg fa-magnifying-glass"></i></button>
+            </form> -->
+
+
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav d-flex">
+        <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'category_list' %}">Разделы</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'brand_list' %}">Бренды</a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="{% url 'product_list' %}">Каталог</a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'test' %}">Тест</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'checkout' %}">Checkout</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+            </a>
+            <ul class="dropdown-menu border-0 shadow">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </li> -->
+
+
+        <!-- Заказы -->
+        <li class="nav-item" style="max-height: 48px;">
+            <a class="nav-link text-white" href="{% url 'cart:cart_list' %}">
+                <figure class="figure">
+                    <i class="fa-solid fa-xl fa-bag-shopping position-relative figure ms-3"  style="color: darkslategray;"></i>
+                    <figcaption class="figure-caption text-center">Заказы</figcaption>
+                </figure>
+            </a>
+        </li>
+
+
+
+        <!-- Корзина -->
+        <li class="nav-item" style="max-height: 48px;">
+            <a class="nav-link text-white" href="{% url 'cart:cart_list' %}">
+                <figure class="figure">
+                    <i class="fa fa-xl fa-shopping-cart position-relative figure ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: darkslategray;">
+                        <span class="position-absolute top-0 start-200 translate-middle badge rounded-pill cart-list shadow" style="background-color: rgb(216, 230, 21); color: black; font-size: 8px;">
+                            {{request.session.cartdata|length}}
+                        </span>
+                    </i>
+                    <figcaption class="figure-caption text-center">Корзина</figcaption>
+                </figure>
+
+
+
+
+                <!-- <i class="fa fa-xl fa-shopping-cart position-relative figure" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: darkslategray;">
+                    <span class="position-absolute top-0 start-200 translate-middle badge rounded-pill cart-list" style="background-color: rgb(216, 230, 21); color: black; font-size: 8px;">
+                        {{request.session.cartdata|length}}
+                    </span>
+                </i> -->
+
+            </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown" style="max-height: 48px;">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                <figure class="figure">
+                    <i class="fa-regular fa-xl fa-user ms-3" style="color: darkslategray;"></i>
+                    <figcaption class="figure-caption text-center">&nbsp;&nbsp;{{ user.username }}</figcaption>
+                </figure>
+            </a>
+            <ul class="dropdown-menu border-0 shadow">
+                <form action="{% url 'logoutuser' %}" method="POST">
+                    {% csrf_token %}
+                    <li>
+                        <a class="nav-link" href="#" style="font-size: 14px;">&nbsp;Личный кабинет</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#" style="font-size: 14px;">&nbsp;Сообщения</a>
+                    </li>
+                    <li>
+                        <a class="nav-link border-bottom" href="#" style="font-size: 14px;">&nbsp;Избранное</a>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn buttons border-0" style="font-size: 14px;">Выход</button>
+                    </li>
+                    {% else %}
+        
+                    <li style="max-height: 48px;">
+                        <a role="button" href="{% url 'loginuser' %}" class="btn buttons border-0" style="font-size: 14px;">
+                            <figure class="figure">
+                                <i class="fa-regular fa-xl fa-user" style="color: darkslategray;"></i>
+                                </i>
+                                <figcaption class="figure-caption text-center">Войти</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </form>
+                {% endif %}
+            </ul>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>

@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+  </head>
+  <body>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-3 shadow rounded mt-5">
+                <span class="d-flex justify-content-center mt-2" style="font-size: 26px; font-weight: bold;">Войти</span>
+                {% if error %}
+                    <div class="alert alert-danger mt-3 mb-5" role="alert" style="font-size: 14px;">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                        <label for="floatingInput" style="color: dimgray;">Логин</label>
+                      </div>
+                      <div class="form-floating">
+                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword" style="color: dimgray;">Пароль</label>
+                      </div>
+                      <div class="span mt-2">
+                        {% csrf_token %}
+                        <a class="nav-link d-flex justify-content-end" href ="{% url 'signup' %}" style="font-size: 14px;">Регистрация</a>
+                        <a class="nav-link d-flex justify-content-end" href ="#" style="font-size: 12px; font-style: italic;">Забыли пароль?</a>
+                    </div>
+                    <div class="container d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-4 mb-4 shadow rounded-3" style="width: 200px;">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "main/base.html" %}
+{% load static %}
+<!-- load humanize -->
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h3 class="my-3" style="font-weight: bold;">Электроника</h3>
+    <div class="main-container">
+        <div class="row">
+            <div class="col-md-2">
+                {% include 'main/filters.html' %}
+            </div>
+            <div class="col-lg-10 col-md-4 product-box" style="padding-right: 0px; padding-left: 0px;">
+                <div class="row g-0 d-flex justify-content-end" id="filteredProducts">
+                    <p class="ajaxLoader">Загрузка.....</p>
+                    {% for product in data %}
+                    <div class="col-md-3" style="width: 270px;">
+                            <div class="card h-100 shadow-none border-0">
+                                <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
+                                    <div class="images">
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <img class="image rounded"
+                                                src="/media/{{product.productvariant_set.first.image_1}}">
+                                        </a>
+                                        {% if product.productvariant_set.first.image_2 %}
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <img class="image rounded"
+                                                src="/media/{{product.productvariant_set.first.image_2}}">
+                                            {% endif %}
+                                        </a>
+                                        {% if product.productvariant_set.first.image_3 %}
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <img class="image rounded"
+                                                src="/media/{{product.productvariant_set.first.image_3}}">
+                                            {% endif %}
+                                        </a>
+                                        {% if product.productvariant_set.first.image_4 %}
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <img class="image rounded"
+                                                src="/media/{{product.productvariant_set.first.image_4}}">
+                                        {% endif %}
+                                        </a>
+                                        {% if product.productvariant_set.first.image_5 %}
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <img class="image rounded"
+                                                src="/media/{{product.productvariant_set.first.image_5}}">
+                                        {% endif %}
+                                        </a>
+                                        {% if product.video %}
+                                        <a href="/product/{{product.slug}}/{{product.id}}">
+                                            <video class="image rounded" autoplay>
+                                                <source src="https://v.ozone.ru/vod/video-6/01GK1JRGS7HAA4NNTHKYPDHYRQ/asset_1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                            </video>
+                                        {% endif %}
+                                        </a>
+        
+                                    </div>
+                            </div>
+                                <div class="card-body hovertest">
+                                
+                                    <!-- <h5 class="card-title">Название карточки</h5>                  intcomma            -->
+                                    <span class="product-price-{{product.id}} badge mb-2"
+                                        style="background-color: limegreen; font-size: 16px;">{{product.productvariant_set.first.price}}</span>
+                                    <a href="/product/{{product.slug}}/{{product.id}}">
+                                        <h5 class="card-text" style="font-size: 12px;">{{product.title|truncatechars:70}}</h5>
+                                    </a>
+
+                                    <input type="hidden" min="1" max="99" value="1"
+                                        class="form-control product-qty-{{product.id}}" id="productQty"
+                                        style="font-size: 16px;">
+                                    <input type="hidden" class="product-image-{{product.id}}"
+                                        value="{{product.productvariant_set.first.image_1}}" /> <!--для корзины -->
+                                    <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" />
+                                    <!--для корзины -->
+                                    <input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" />
+                                    <!--для корзины -->
+
+                                    <button class="btn btn-sm add-to-cart" data-index="{{product.id}}"
+                                        style="color: white; background-color: rgb(216, 42, 231); font-size: 12px;">В
+                                        корзину</button>
+                                    <button class="btn btn add-wishlist" data-product="#"><i class="fa fa-heart"
+                                            style="color: red;"></i></button>
+                                    <span class="float-right ms-5" style="font-size: 13px;">4.5/5<i
+                                            class="fa fa-star text-warning"></i></span>
+                                </div>
+                            </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- 
+                            data-limit - сколько товаров максимум показать при клике на кнопку Больше
+                            data-total - сколько всего записей в базе данных 
+                            Если тут меняется название, то менять и в Custom.js-->
+                <p class="my-4 text-center"><button id="loadmore" data-total="{{total_products}}" data-limit="4"
+                        class="btn btn-dark btn-sm">Больше <i class="fa fa-sync load-more-icon"></i></button></p>
+            </div>
+        </div>
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
+
+</html>
+
+{% endblock %}

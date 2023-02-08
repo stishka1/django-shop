@@ -1,0 +1,36 @@
+{% extends "main/base.html" %} 
+{% load static %} 
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3 class="my-4 border-bottom pb-1">Бренды</h3>
+        <div class="row row-cols-1 row-cols-lg-6 g-4">
+            {% for brand in brands %}
+            <div class="col mt-3">
+                <div class="card shadow border-0">
+                    <div class="container mt-2">
+                        <a href="/brand_product_list/{{brand.id}}"><img src="/media/{{brand.image}}" class="card-img-top" alt="#"></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-text" style="justify-content: center;">{{ brand.title }}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </body>
+</html>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!-- Страница для показа отфильтрованных данных с помощью AJAX -->
+<!-- Этой страницы не должно быть в urls.py! -->
+<!-- Если меняется страница каталога product_list - менять автоматом и эту страницу! -->
+
+<div class="row g-0">
+    {% for product in data %}
+    <div class="col-md-3 product-box">
+        <div class="card h-100 shadow-none border-0">
+            <div class="card-body">
+                <div class="container images">
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <img class="image rounded"
+                            src="/media/{{product.productvariant_set.first.image_1}}">
+                    </a>
+                    {% if product.productvariant_set.first.image_2 %}
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <img class="image rounded"
+                            src="/media/{{product.productvariant_set.first.image_2}}">
+                        {% endif %}
+                    </a>
+                    {% if product.productvariant_set.first.image_3 %}
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <img class="image rounded"
+                            src="/media/{{product.productvariant_set.first.image_3}}">
+                        {% endif %}
+                    </a>
+                    {% if product.productvariant_set.first.image_4 %}
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <img class="image rounded"
+                            src="/media/{{product.productvariant_set.first.image_4}}">
+                    {% endif %}
+                    </a>
+                    {% if product.productvariant_set.first.image_5 %}
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <img class="image rounded"
+                            src="/media/{{product.productvariant_set.first.image_5}}">
+                    {% endif %}
+                    </a>
+                    {% if product.video %}
+                    <a href="/product/{{product.slug}}/{{product.id}}">
+                        <video class="image rounded" autoplay>
+                            <source src="https://v.ozone.ru/vod/video-6/01GK1JRGS7HAA4NNTHKYPDHYRQ/asset_1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        </video>
+                    {% endif %}
+                    </a>
+
+                </div>
+            <!-- <h5 class="card-title">Название карточки</h5> -->
+            <span class="badge mb-2" style="background-color: limegreen; font-size: 16px;">{{product.productvariant_set.first.price}}&nbsp;₽</span>
+            <h5 class="card-text" style="font-size: 12px;">{{product.detail_desc|truncatechars:90}}</h5>
+            <button class="btn btn-sm btn-primary add-to-cart" data-index="#"><i class="fa fa-shopping-cart"></i></button>
+            <button class="btn btn-sm btn-outline-danger add-wishlist" data-product="#"><i class="fa fa-heart"></i></button>
+            <span class="float-right ms-5" style="font-size: 13px;">4.5/5<i class="fa fa-star text-warning"></i></span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+		

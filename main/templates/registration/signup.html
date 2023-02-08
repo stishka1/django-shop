@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- <table class="table border-0 shadow rounded" style="width: 50%; font-size: 14px;"> -->
+	<div class="container my-2 d-flex justify-content-center mt-5">
+		<form class="p-3 shadow rounded" method="post" style="width: 350px; font-size: 14px;">
+			<span class="d-flex justify-content-center" style="font-size: 26px; font-weight: bold;">Зарегистрироваться</span>
+				{% csrf_token %}
+				{{user_form.as_p}}
+				<input type="submit" value="Зарегистрироваться!" class="btn btn-primary w-100 rounded shadow mb-2 mt-2" />
+		</form>
+	</div>
+{% endblock %}
