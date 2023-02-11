@@ -1,0 +1,72 @@
+body {
+
+}
+
+.main-container {
+	max-width: 1400px;
+	margin: 0px auto;
+	padding: 0px 10px;
+	font-family: 'Roboto', sans-serif;
+  }
+  
+  @media (max-width: 1400px) {
+	.main-container{
+	  max-width: 970px;
+	}
+  }
+  
+  @media (max-width: 992px) {
+	.main-container{
+	  max-width: 750px;
+	}
+  }
+  
+  @media (max-width: 767px) {
+	.main-container{
+	  max-width: none;
+	}
+  }
+
+
+#nav {
+	background-color: #38c0ff;
+	font-weight: 500;
+	/* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(217,217,217,1) 0%, rgba(255,255,255,1) 100%); */
+}
+
+.avatar {
+	border-radius: 50%;
+}
+
+.megasubmenu{ 
+	padding:1rem; 
+	background: white url("main/images/football2.jpg") no-repeat;
+}
+
+  /* ============ desktop view ============ */
+  @media all and (min-width: 992px) {
+	  .megasubmenu{ 
+		  left:100%; 
+		  top:0; 
+		  min-height: 100%; 
+		  min-width:500px;
+	  }
+
+	  .dropdown-menu li a {
+		font-weight: 300;
+	}
+
+	  .dropdown-menu li {
+		font-size: 16px;
+		padding-top: 8px; 
+		/* padding-left: 18px;  */
+		/* padding-bottom: 8px; */
+	}
+	  
+	  .dropdown-menu > li:hover .megasubmenu{
+		  display: block;
+	  }
+  }	
+  /* ============ desktop view .end// ============ */
+
+

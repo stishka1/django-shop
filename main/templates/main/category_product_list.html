@@ -1,4 +1,4 @@
-{% extends "main/base.html" %} 
+{% extends "main/gallery.html" %}
 {% load static %} 
 
 {% block content %}
@@ -9,48 +9,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3 class="my-4 border-bottom pb-1">{{category.title}}</h3>
-            <div class="row">
-                <div class="col-md-2">
-                    {% include 'main/filters.html' %}
-                </div>
+        <div class="main-container">
+            <h3 class="my-4 border-bottom pb-1">{{category.title}}</h3>
+                <div class="row">
+                    <div class="col-md-2">
+                        {% include 'main/filters.html' %}
+                    </div>
 
-                <div class="col-md-10">
-                    <div class="row g-0" id="filteredProducts">
-                        {% for product in cat_products %}
-                        <div class="col-md-3">
-                            <div class="card h-100 shadow-none border-0">
-                                <div class="card-body h-100">
-                                    <div class="container" style="height: 75%;">
-                                        <a href="/product/{{product.slug}}/{{product.id}}">
-                                        {% if product.productvariant_set.first.image_1 %}
-                                            <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top" alt="#"></a>
-                                        {% else %}
-                                            <img src="#" class="card-img-top" alt="#"></a>
-                                        {% endif %}
+                    <div class="col-md-10">
+                        <div class="row g-0" id="filteredProducts">
+                            {% for product in cat_products %}
+                            <div class="col-md-3">
+                                <div class="card h-100 shadow-none border-0">
+                                    <div class="card-body h-100">
+                                        <div class="container" style="height: 75%;">
+                                            <a href="/product/{{product.slug}}/{{product.id}}">
+                                            {% if product.productvariant_set.first.image_1 %}
+                                                <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top" alt="#"></a>
+                                            {% else %}
+                                                <img src="#" class="card-img-top" alt="#"></a>
+                                            {% endif %}
+                                        </div>
+                                    <span class="badge mb-2 product-price-{{product.id}}" style="background-color: limegreen; font-size: 16px;">{{product.productvariant_set.first.price}}</span>
+                                    <!-- <h6><span class="product-price-#">39 999 р.</span></h6> -->
+                                            <h5 class="card-text" style="font-size: 12px;">{{product.detail_desc|truncatechars:70}}</h5>
                                     </div>
-                                <span class="badge mb-2 product-price-{{product.id}}" style="background-color: limegreen; font-size: 16px;">{{product.productvariant_set.first.price}}</span>
-                                <!-- <h6><span class="product-price-#">39 999 р.</span></h6> -->
-                                        <h5 class="card-text" style="font-size: 12px;">{{product.detail_desc|truncatechars:70}}</h5>
-                                </div>
-                                <div class="container mb-2">
-                                    <input type="hidden" min="1" max="99" value="1" class="form-control product-qty-{{product.id}}" id="productQty" style="font-size: 16px;">
-                                    <input type="hidden" class="product-image-{{product.id}}" value="{{product.productvariant_set.first.image_1}}" /> <!--для корзины -->
-                                    <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" /> <!--для корзины -->
-                                    <input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" /> <!--для корзины -->
+                                    <div class="container mb-2">
+                                        <input type="hidden" min="1" max="99" value="1" class="form-control product-qty-{{product.id}}" id="productQty" style="font-size: 16px;">
+                                        <input type="hidden" class="product-image-{{product.id}}" value="{{product.productvariant_set.first.image_1}}" /> <!--для корзины -->
+                                        <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" /> <!--для корзины -->
+                                        <input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" /> <!--для корзины -->
 
-                                    <button class="btn btn-sm btn-primary add-to-cart" data-index="{{product.id}}">В корзину</button>
-                                    <button class="btn btn add-wishlist" data-product="#"><i class="fa fa-heart" style="color: red;"></i></button>
-                                    <!-- <button class="btn btn-sm btn-danger disabled"><i class="fa fa-heart"></i></button> -->
-                                    <span class="float-right ms-5" style="font-size: 12px;">4.5/5<i class="fa fa-star text-warning"></i></span>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-index="{{product.id}}">В корзину</button>
+                                        <button class="btn btn add-wishlist" data-product="#"><i class="fa fa-heart" style="color: red;"></i></button>
+                                        <!-- <button class="btn btn-sm btn-danger disabled"><i class="fa fa-heart"></i></button> -->
+                                        <span class="float-right ms-5" style="font-size: 12px;">4.5/5<i class="fa fa-star text-warning"></i></span>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
-            </div>
-
+        </div>
 
     </body>
 </html>

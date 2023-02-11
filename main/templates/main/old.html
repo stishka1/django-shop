@@ -137,3 +137,70 @@
     </div>
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg fixed-top py-1 rounded" style="background-color: #1db7e6; color: #4C514C;">
+    <div class="container">
+    <a class="navbar-brand" href="/">Покупай-ка!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="form-inline my-2 my-lg-0" action="/search">
+        <div class="input-group">
+            <input name="q" type="text" class="form-control" placeholder="Поиск..." style="font-size: 12px; height: 75%;" />
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit" id="button-addon2">Поиск</button>
+            </div>
+            </div>
+        </form>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'test' %}" style="color: #4C514C;">Тест</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'category_list' %}">Категории</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'brand_list' %}">Бренды</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'product_list' %}">Каталог</a>
+        </li>
+        <li class="nav-item">
+            {% url 'cart:cart_list' %}
+            <a class="nav-link text-white" href="{% url 'cart:cart_list' %}">
+                <i class="fa fa-lg fa-shopping-cart position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: darkslategray;">
+                    <span class="position-absolute top-0 start-200 translate-middle badge rounded-pill cart-list" style="background-color: white; color: black; font-size: 8px;">
+                        {{request.session.cartdata|length}}
+                    </span>
+                </i>
+            </a>
+                <span class="cart-list">{{request.session.cartdata|length}}
+
+                </span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            &nbsp;&nbsp;<i class="fa fa-user"></i>
+            </a>
+            <ul class="dropdown-menu shadow border-0">
+                <li><a class="dropdown-item" href="#">Дашборд</a></li>
+                <li><a class="dropdown-item" href="#">Выход</a></li>
+                <li><a class="dropdown-item" href="#">Войти</a></li>
+                <li><a class="dropdown-item" href="#">Регистрация</a></li>
+            </ul>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>

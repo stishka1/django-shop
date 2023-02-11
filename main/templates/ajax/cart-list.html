@@ -9,70 +9,72 @@
     </head>
     <body>
 		<!-- <main class="container rounded-3 my-4" id="cartList"> -->
-		<div class="container-fluid my-4" id="cartList">
-			<h2 class="my-4 pb-1" style="font-weight: bold;">Корзина ({{totalitems}})</h2>
-			<div class="row">
-				<div class="col-md-8 mt-2">
-					<table class="table table-sm table-borderless">
-						<!-- <thead>
-							<tr>
-								<th>Товары</th>
-								<th>Количество</th>
-								<th>Цена</th>
-								<th>Общая сумма</th>
-							</tr>
-						</thead> -->
-						<tbody>
-							<span class="d1"></span>
-							{% for product_id, value in cart_data.items %}
-							<tr>
-								<td style="width: 60%;">
-									<img src="/media/{{value.image_1}}" width="85" />
-									<a href="/product/{{value.title|slugify}}/{{product_id}}" style="font-size: 12px; color: black; text-decoration: none;">{{value.title|truncatechars:67}}</a>
-								</td>
-								<td style="width: 15%;">
-									<input type="number" min="1" max="99" class="form-control product-qty-{{product_id}} mt-3" value="{{value.qty}}" style="font-size: 12px; width: 50%;"/>
-								</td>
-								<!-- <td style="width: 10%; font-size: 12px; font-weight: bold;">{{value.price}} ₽</td> -->
-								<td style="width: 10%; font-size: 12px; font-weight: bold; padding-top: 25px;">
-									<span>{% widthratio value.price 1 value.qty %} ₽</span>
-								</td>
-								<td style="width: 10%; font-size: 12px; font-weight: bold;">
-									<!-- <button class="btn btn-sm update-item mt-3" data-item="{{product_id}}"><i class="fa-regular fa-pen-to-square"></i></button> -->
-									<button class="btn btn-sm delete-item mt-3" data-item="{{product_id}}"><i class="fa-solid fa-xmark"></i></button>
-								</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-					<br>
-					{% if totalitems %}
-					<div class="input-group coupon-group mb-5" style="width: 50%;">
-						<input type="text" class="form-control" placeholder="Введите код купона" aria-label="" aria-describedby="button-addon2">
-						<button class="btn" type="button" id="button-addon2" style="background-color: orange; font-weight: bold; font-size: 16px; color: white;">Применить</button>
+		<div class="main-container">
+			<div class="container-fluid my-4" id="cartList">
+				<h2 class="my-4 pb-1" style="font-weight: bold;">Корзина ({{totalitems}})</h2>
+				<div class="row">
+					<div class="col-md-8 mt-2">
+						<table class="table table-sm table-borderless">
+							<!-- <thead>
+								<tr>
+									<th>Товары</th>
+									<th>Количество</th>
+									<th>Цена</th>
+									<th>Общая сумма</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<span class="d1"></span>
+								{% for product_id, value in cart_data.items %}
+								<tr>
+									<td style="width: 60%;">
+										<img src="/media/{{value.image_1}}" width="85" />
+										<a href="/product/{{value.title|slugify}}/{{product_id}}" style="font-size: 12px; color: black; text-decoration: none;">{{value.title|truncatechars:67}}</a>
+									</td>
+									<td style="width: 15%;">
+										<input type="number" min="1" max="99" class="form-control product-qty-{{product_id}} mt-3" value="{{value.qty}}" style="font-size: 12px; width: 50%;"/>
+									</td>
+									<!-- <td style="width: 10%; font-size: 12px; font-weight: bold;">{{value.price}} ₽</td> -->
+									<td style="width: 10%; font-size: 12px; font-weight: bold; padding-top: 25px;">
+										<span>{% widthratio value.price 1 value.qty %} ₽</span>
+									</td>
+									<td style="width: 10%; font-size: 12px; font-weight: bold;">
+										<!-- <button class="btn btn-sm update-item mt-3" data-item="{{product_id}}"><i class="fa-regular fa-pen-to-square"></i></button> -->
+										<button class="btn btn-sm delete-item mt-3" data-item="{{product_id}}"><i class="fa-solid fa-xmark"></i></button>
+									</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<br>
+						{% if totalitems %}
+						<div class="input-group coupon-group mb-5" style="width: 50%;">
+							<input type="text" class="form-control" placeholder="Введите код купона" aria-label="" aria-describedby="button-addon2">
+							<button class="btn" type="button" id="button-addon2" style="background-color: orange; font-weight: bold; font-size: 16px; color: white;">Применить</button>
+						</div>
+						{% endif %}
 					</div>
-					{% endif %}
-				</div>
-				<div class="col-md-4">
-					{% if totalitems %}
-					<div class="card price-box border-0 rounded-3 mb-3">
-						<div class="card-body">
-							<button class="btn btn-lg w-100 mb-3" type="button" style="background-color: #0EAD43; color: white; font-size: 15px; font-weight: bold;">&nbsp;&nbsp;Перейти к оформлению</button>
-							<p class="card-text mb-3" style="font-size: 12px; color: darkgrey;">Доступные способы и время доставки можно выбрать при оформлении заказа</p>
-						<div class="row">
-							<div class="col-md">
-								<h5 class="mb-3" style="font-weight: bold;">Общая стоимость: {{total_amount}} ₽</h5>
+					<div class="col-md-4">
+						{% if totalitems %}
+						<div class="card price-box border-0 rounded-3 mb-3">
+							<div class="card-body">
+								<button class="btn btn-lg w-100 mb-3" type="button" style="background-color: #0EAD43; color: white; font-size: 15px; font-weight: bold;">&nbsp;&nbsp;Перейти к оформлению</button>
+								<p class="card-text mb-3" style="font-size: 12px; color: darkgrey;">Доступные способы и время доставки можно выбрать при оформлении заказа</p>
+							<div class="row">
+								<div class="col-md">
+									<h5 class="mb-3" style="font-weight: bold;">Общая стоимость: {{total_amount}} ₽</h5>
+								</div>
+							</div>
 							</div>
 						</div>
-						</div>
+						{% endif %}
 					</div>
-					{% endif %}
 				</div>
 			</div>
+			<!-- <main class="container rounded-3 my-4" id="cartList"> -->
+				<!-- Featured Products -->
+			<!-- </main> -->
 		</div>
-		<!-- <main class="container rounded-3 my-4" id="cartList"> -->
-			<!-- Featured Products -->
-		<!-- </main> -->
 	</body>
 </html>
 {% endblock %}

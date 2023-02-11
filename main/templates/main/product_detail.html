@@ -1,4 +1,4 @@
-{% extends "main/base.html" %} 
+{% extends "main/gallery.html" %}
 {% load static %} 
 
 {% block content %}
@@ -10,182 +10,191 @@
         <title>MyShop</title>
     </head>
     <body>
-        <main class="container-fluid">
-            <!-- <div class="text">Text Тест</div> -->
-            <p class="title mt-3 border-bottom" style="color: #000000; font-size: 20px; font-weight: bold;">
-                {{product.title}} <br>
-                <span style="font-size: 14px; font-weight: normal; color: rgb(75, 75, 75);">Каталог <i class="fa-solid fa-caret-right"></i> Электроника <i class="fa-solid fa-caret-right"></i> Ноутбуки (из фильтра)</span>
-            </p>
-            <p style="font-size: 14px;">
-                <i class="fa-solid fa-star fa-lg shadow" style="color: #08cde7"></i><i class="fa-solid fa-star fa-lg" style="color: #08cde7"></i><i class="fa-solid fa-star fa-lg" style="color: #08cde7"></i><i class="fa-regular fa-star-half-stroke fa-lg" style="color: #08cde7"></i><i class="fa-regular fa-star fa-lg" style="color: #08cde7"></i> 5489 отзывов &nbsp;&nbsp;
-                <i class="fa-brands fa-youtube fa-lg" style="color: rgb(253, 164, 31);"></i> 5 видео&nbsp;&nbsp;
-                <i class="fa-regular fa-heart fa-lg" style="color: rgb(240, 34, 130);"></i> В избранное
-            </p>
-            <div class="row">
-                        <div class="col-md-1 image-list grid-item">
-                            <div class="gallery">
-                                <div class="image-list">
-                                    <img src="/media/{{product.productvariant_set.first.image_1}}" alt="">
-                                    {% if product.productvariant_set.first.image_2 %}
-                                    <img src="/media/{{product.productvariant_set.first.image_2}}" alt="">
-                                    {% endif %}
-                                    {% if product.productvariant_set.first.image_3 %}
-                                    <img src="/media/{{product.productvariant_set.first.image_3}}" alt="">
-                                    {% endif %}
-                                    {% if product.productvariant_set.first.image_4 %}
-                                    <img src="/media/{{product.productvariant_set.first.image_4}}" alt="">
-                                    {% endif %}
-                                    {% if product.productvariant_set.first.image_5 %}
-                                    <img src="/media/{{product.productvariant_set.first.image_5}}" alt="">
-                                    {% endif %}
+        <div class="main-container">
+            <main class="container-fluid">
+                <!-- <div class="text">Text Тест</div> -->
+                <p class="title mt-3 border-bottom" style="color: #000000; font-size: 20px; font-weight: bold;">
+                    {{product.title}} <br>
+                    <span style="font-size: 14px; font-weight: normal; color: rgb(75, 75, 75);">Каталог <i class="fa-solid fa-caret-right"></i> Электроника <i class="fa-solid fa-caret-right"></i> Ноутбуки (из фильтра)</span>
+                </p>
+                <p style="font-size: 14px;">
+                    <i class="fa-solid fa-star fa-lg shadow" style="color: #08cde7"></i><i class="fa-solid fa-star fa-lg" style="color: #08cde7"></i><i class="fa-solid fa-star fa-lg" style="color: #08cde7"></i><i class="fa-regular fa-star-half-stroke fa-lg" style="color: #08cde7"></i><i class="fa-regular fa-star fa-lg" style="color: #08cde7"></i> 5489 отзывов &nbsp;&nbsp;
+                    <i class="fa-brands fa-youtube fa-lg" style="color: rgb(253, 164, 31);"></i> 5 видео&nbsp;&nbsp;
+                    <i class="fa-regular fa-heart fa-lg" style="color: rgb(240, 34, 130);"></i> В избранное
+                </p>
+                <div class="row">
+                            <div class="col-md-1 image-list grid-item">
+                                <div class="gallery">
+                                    <div class="image-list">
+                                        <img src="/media/{{product.productvariant_set.first.image_1}}" alt="">
+                                        {% if product.productvariant_set.first.image_2 %}
+                                        <img src="/media/{{product.productvariant_set.first.image_2}}" alt="">
+                                        {% endif %}
+                                        {% if product.productvariant_set.first.image_3 %}
+                                        <img src="/media/{{product.productvariant_set.first.image_3}}" alt="">
+                                        {% endif %}
+                                        {% if product.productvariant_set.first.image_4 %}
+                                        <img src="/media/{{product.productvariant_set.first.image_4}}" alt="">
+                                        {% endif %}
+                                        {% if product.productvariant_set.first.image_5 %}
+                                        <img src="/media/{{product.productvariant_set.first.image_5}}" alt="">
+                                        {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-4 product-image portfolio-item">
+                        <a href="/media/{{product.productvariant_set.first.image_1}}" class="fancylight popup-btn" data-fancybox-group="light"> 
+                            <img class="card-img-top active img-fluid" src="/media/{{product.productvariant_set.first.image_1}}" alt="">
+                        </a>
+
+                        <!-- <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top active" alt="{{product.title}}"> -->
+                    </div>
+
+                    <!-- Опции - варианты товара -->
+                    <div class="col-md-4">
+                            <table class="table table-borderless" style="font-size: 12px;">
+                                <tr>
+                                    <th>
+                                        <img src="/media/brand_imgs/b1746f834bf712430288f91906dc2ad8.jpg" style="width: 50px;">
+                                    </th>
+                                    <td>
+                                        Название бренда
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Цвет</th>
+                                    <!-- <td>
+                                            {% for color in colors %}
+                                                <button class="btn btn-lg choose-color rounded-1" data-color="{{color.color__id}}" style="background-color: {{color.color__image}}"></button>
+                                            {% endfor %}
+                                    </td> -->
+                                </tr>
+                                <tr>
+                                    <th>Размер</th>
+                                    <td>
+                                        {% for size in sizes %}
+                                            <button data-price="{{size.price}}" class="btn btn-outline-primary btn-sm choose-size color{{size.color__id}}">{{size.size__title}}</button>
+                                            <!-- <button type="button" data-price="{{size.price}}" class="btn btn-outline-primary btn-sm choose-size color{{size.color__id}}">{{size.size__title}}</button> -->
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- <div class="input-group my-3">
+                                <input type="number" class="form-control" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-lg ms-3" type="button" id="button-addon2"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;В корзину</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    <div class="col-md-3">
+                        <div class="card border-0 box">
+                            <div class="card-body">
+                                <!-- повторяющийся класс product-price это не ошибка! Я не шарю в яваскрипте чтобы переделать чтобы еще и product.id добавлялся... :() -->
+                                <span class="card-title product-price-{{product.id}} product-price" style="font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">{{product.productvariant_set.first.price}}</span> <span style="font-size: 22px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">&nbsp;₽</span>
+                                <br>
+                                <span style="font-size: 16px; color: rgba(41, 151, 13, 0.9);">В наличии</span>
+                                <p class="card-text mt-3" style="font-size: 12px;">Акция! Успей купить по выгодной цене!</p>
+                                <div class="row">
+                                    <div class="col-md-4 input-group-lg">
+                                        <input type="number" min="1" max="99" value="1" class="form-control product-qty-{{product.id}} mt-3" id="productQty" style="font-size: 16px;">
+                                    </div>
+                                    <div class="col-md">
+                                        <input type="hidden" class="product-image-{{product.id}}" value="{{product.productvariant_set.first.image_1}}" /> <!--для корзины -->
+                                        <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" /> <!--для корзины -->
+                                        <input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" /> <!--для корзины -->
+                                        <button class="btn btn-lg w-100 add-to-cart mt-3" data-index="{{product.id}}" type="button" style="background-color: rgb(66, 179, 22); color: white;"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;В корзину</button>
+                                    </div>
+                            </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="card border-0">
+                            <div class="card-body">
+                                <!-- повторяющийся класс product-price это не ошибка! Я не шарю в яваскрипте чтобы переделать чтобы еще и product.id добавлялся... :() -->
+                                <span class="card-title d-flex justify-content-center" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">Лог цены</span>
+                                <p><img src="{% static 'media/images/price_history.jpg' %}" width="100%" height="90" class="rounded"></p>
+                                <!-- <p class="card-text" style="font-size: 12px;">Акция! Успей купить по выгодной цене!</p> -->
                             </div>
                         </div>
                     </div>
-                <div class="col-md-4 product-image portfolio-item">
-                    <a href="/media/{{product.productvariant_set.first.image_1}}" class="fancylight popup-btn" data-fancybox-group="light"> 
-                        <img class="card-img-top active img-fluid" src="/media/{{product.productvariant_set.first.image_1}}" alt="">
-                    </a>
-
-                    <!-- <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top active" alt="{{product.title}}"> -->
                 </div>
-
-                <!-- Опции - варианты товара -->
-                <div class="col-md-4">
-                        <table class="table table-borderless" style="font-size: 12px;">
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="my-3" style="color: black;">Характеристики</h5>
+                        <table class="table table-sm table-striped table-borderless" style="font-size: 12px;">
                             <tr>
-                                <th>
-                                    <img src="/media/brand_imgs/b1746f834bf712430288f91906dc2ad8.jpg" style="width: 50px;">
-                                </th>
-                                <td>
-                                    Название бренда
-                                </td>
+                                <th>Бренд</th>
+                                <td><a href="">{{product.brand.title}}</a></td>
                             </tr>
                             <tr>
-                                <th>Цвет</th>
-                                <td>
-                                        {% for color in colors %}
-                                            <button class="btn btn-lg choose-color rounded-1" data-color="{{color.color__id}}" style="background-color: {{color.color__image}}"></button>
-                                        <!-- <button type="button" class="btn choose-color" data-color="{{color.color__id}}" style="background-color: {{color.color__image}};"></button> -->
-                                        {% endfor %}
-                                </td>
+                                <th>Категория</th>
+                                <td><a href="">{{product.category.title}}</a></td>
                             </tr>
                             <tr>
-                                <th>Размер</th>
-                                <td>
-                                    {% for size in sizes %}
-                                        <button data-price="{{size.price}}" class="btn btn-outline-primary btn-sm choose-size color{{size.color__id}}">{{size.size__title}}</button>
-                                        <!-- <button type="button" data-price="{{size.price}}" class="btn btn-outline-primary btn-sm choose-size color{{size.color__id}}">{{size.size__title}}</button> -->
-                                    {% endfor %}
-                                </td>
+                                <th>Характеристики</th>
+                                <td>{{product.specs}}</td>
                             </tr>
                         </table>
-                        
-                        <!-- <div class="input-group my-3">
-                            <input type="number" class="form-control" />
-                            <div class="input-group-append">
-                                <button class="btn btn-primary btn-lg ms-3" type="button" id="button-addon2"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;В корзину</button>
-                            </div>
-                        </div> -->
                     </div>
-                <div class="col-md-3">
-                    <div class="card border-0 box">
-                        <div class="card-body">
-                            <!-- повторяющийся класс product-price это не ошибка! Я не шарю в яваскрипте чтобы переделать чтобы еще и product.id добавлялся... :() -->
-                            <span class="card-title product-price-{{product.id}} product-price" style="font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">{{product.productvariant_set.first.price}}</span> <span style="font-size: 22px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">&nbsp;₽</span>
-                            <br>
-                            <span style="font-size: 16px; color: rgba(41, 151, 13, 0.9);">В наличии</span>
-                            <p class="card-text mt-3" style="font-size: 12px;">Акция! Успей купить по выгодной цене!</p>
-                            <div class="row">
-                                <div class="col-md-4 input-group-lg">
-                                    <input type="number" min="1" max="99" value="1" class="form-control product-qty-{{product.id}} mt-3" id="productQty" style="font-size: 16px;">
-                                </div>
-                                <div class="col-md">
-                                    <input type="hidden" class="product-image-{{product.id}}" value="{{product.productvariant_set.first.image_1}}" /> <!--для корзины -->
-                                    <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" /> <!--для корзины -->
-                                    <input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" /> <!--для корзины -->
-                                    <button class="btn btn-lg w-100 add-to-cart mt-3" data-index="{{product.id}}" type="button" style="background-color: rgb(66, 179, 22); color: white;"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;В корзину</button>
-                                </div>
+                    <div class="col-md-6">
+                        <h5 class="my-3" style="color: black;">Отзывы (7)</h5>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
-                        </div>
-                      </div>
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                      <div class="card border-0">
-                        <div class="card-body">
-                            <!-- повторяющийся класс product-price это не ошибка! Я не шарю в яваскрипте чтобы переделать чтобы еще и product.id добавлялся... :() -->
-                            <span class="card-title d-flex justify-content-center" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.9);">Лог цены</span>
-                            <p><img src="{% static 'media/images/price_history.jpg' %}" width="100%" height="90" class="rounded"></p>
-                            <!-- <p class="card-text" style="font-size: 12px;">Акция! Успей купить по выгодной цене!</p> -->
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="my-3" style="color: black;">Характеристики</h5>
-                    <table class="table table-sm table-striped table-borderless" style="font-size: 12px;">
-                        <tr>
-                            <th>Бренд</th>
-                            <td><a href="">{{product.brand.title}}</a></td>
-                        </tr>
-                        <tr>
-                            <th>Категория</th>
-                            <td><a href="">{{product.category.title}}</a></td>
-                        </tr>
-                        <tr>
-                            <th>Характеристики</th>
-                            <td>{{product.specs}}</td>
-                            <video width="400" height="300" autoplay>
-                                <source src="https://v.ozone.ru/vod/video-6/01GK1JRGS7HAA4NNTHKYPDHYRQ/asset_1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                            </video>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-9">
-                    <h5 class="my-3 mt-3" style="color: black;">Описание</h5>
-                    <p class="text" style="font-size: 14px; line-height: 1.7em;">{{product.detail_desc}}</p>
-                </div>
-            </div>
-
-            <div class="row g-1 mt-3">
-                <h5 class="my-3" style="color: black;">Похожие товары</h5>
-                {% for product in related_products %}
-                <div class="col-md-3">
-                    <div class="card-body">
-                        <div class="container mt-2">
-                                <a href="/product/{{product.slug}}/{{product.id}}">
-                                    {% if product.productvariant_set.first.image_1 %}
-                                        <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top" alt="#"></a>
-                                    {% else %}
-                                        <img src="#" class="card-img-top" alt="#"></a>
-                                    {% endif %}
-                            </div>
-                        <span class="badge mb-2" style="background-color: limegreen; font-size: 16px;"></span>
-                                <h5 class="card-text" style="font-size: 12px;">{{product.detail_desc|truncatechars:70}}</h5>
+                          <div class="input-group">
+                            <span class="input-group-text-lg">With textarea</span>
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                          </div>
                     </div>
-                        <div class="container mb-2">
-                            <button class="btn btn-sm btn-primary add-to-cart " data-index="{{product.id}}"><i class="fa fa-shopping-cart"></i></button>
-                            <button class="btn btn-sm btn-outline-danger add-wishlist" data-product="#"><i class="fa fa-heart"></i></button>
-                            <span class="float-right ms-5" style="font-size: 12px;">4.5/5<i class="fa fa-star text-warning"></i></span>
-                        </div>
                 </div>
-                {% endfor %}
-            </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <h5 class="my-3 mt-3" style="color: black;">Описание</h5>
+                        <!-- <video width="400" height="300" autoplay>
+                            <source src="https://v.ozone.ru/vod/video-6/01GK1JRGS7HAA4NNTHKYPDHYRQ/asset_1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        </video> -->
+                        <p class="text" style="font-size: 14px; line-height: 1.7em;">{{product.detail_desc}}</p>
+                    </div>
+                </div>
 
-            <br>
-            <br>
-            <br>
-            <br>
-        </main>
+                <div class="row g-1 mt-3">
+                    <h5 class="my-3" style="color: black;">Похожие товары</h5>
+                    {% for product in related_products %}
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <div class="container mt-2">
+                                    <a href="/product/{{product.slug}}/{{product.id}}">
+                                        {% if product.productvariant_set.first.image_1 %}
+                                            <img src="/media/{{product.productvariant_set.first.image_1}}" class="card-img-top" alt="#"></a>
+                                        {% else %}
+                                            <img src="#" class="card-img-top" alt="#"></a>
+                                        {% endif %}
+                                </div>
+                            <span class="badge mb-2" style="background-color: limegreen; font-size: 16px;"></span>
+                                    <h5 class="card-text" style="font-size: 12px;">{{product.detail_desc|truncatechars:70}}</h5>
+                        </div>
+                            <div class="container mb-2">
+                                <button class="btn btn-sm btn-primary add-to-cart " data-index="{{product.id}}"><i class="fa fa-shopping-cart"></i></button>
+                                <button class="btn btn-sm btn-outline-danger add-wishlist" data-product="#"><i class="fa fa-heart"></i></button>
+                                <span class="float-right ms-5" style="font-size: 12px;">4.5/5<i class="fa fa-star text-warning"></i></span>
+                            </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+            </main>
         <br>
         <br>
+    </div>
     </body>
 </html>
 {% endblock %}

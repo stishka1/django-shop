@@ -1,243 +1,317 @@
-
-{% load static %}
-{% block content %}
-
+{% load static %} 
 <!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
-        <script type="text/javascript" src="{% static 'custom.js' %}"></script>
-    </head>
-    <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <div class="container">
-              <div class="row">
-                  <div class="col-lg-12 text-center my-2">
-                      <h4>Isotope filter magical layouts with Bootstrap 4</h4>
-                  </div>
+      <!-- Всегда первым идет jquery, потом все кастомные скрипты-->
+      <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+      <!-- Шрифт Roboto, шрифт всегда должен быть перед подключением css файла -->
+      <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+
+      <link rel="stylesheet" type="text/css" href="{% static '2.css' %}">
+
+      <!-- Мой файл javascript -->
+      <script type="text/javascript" src="{% static 'custom.js' %}"></script>
+
+      <!--FontAwesome CDN-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+      <script src="https://kit.fontawesome.com/25aa5b4562.js" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap 5-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+      <!-- MDB -->
+      <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/> -->
+      <!-- MDB -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+
+      <!-- Отрытие картинки на детальной странице товара на максимум -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+</head>
+<body>
+
+  <div class="main-container">
+  <!-- ============= COMPONENT ============== -->
+    <nav class="navbar navbar-expand-lg navbar-dark rounded shadow" id="nav">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="{% url 'home' %}">Multishop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav">
+
+
+
+        <li class="nav-item dropdown" style="max-height: 48px;">
+          <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="{% url 'product_list' %}">
+            <i class="fa-solid fa-xl fa-bars ms-3" style="color: rgb(255, 255, 255);"></i>
+            <!-- <i class="fa-solid fa-xl fa-bars-staggered ms-3" style="color: rgb(0, 0, 0);"></i> -->
+              <!-- <figure class="figure">
+                      <i class="fa-solid fa-xl fa-bars-staggered ms-3" style="color: rgb(0, 0, 0);"></i>
+                      <figcaption class="figure-caption text-center" style="font-weight: bold;">Каталог</figcaption>
+              </figure> -->
+          </a>
+          <ul class="dropdown-menu border-0 rounded mt-3 shadow">
+            <li><a class="dropdown-item text-black" href="#"> Смартфоны </a></li>
+            <li><a class="dropdown-item text-black" href="#"> Планшеты </a></li>
+            <li class="has-megasubmenu">
+              <a class="dropdown-item text-black" href="#"> Ноутбуки &raquo; </a>
+              <div class="megasubmenu dropdown-menu border-0 rounded ms-1 shadow" style="width: 500px;">
+                <div class="row">
+                        <div class="col-1">
+                        </div>
+                        <div class="col-5">
+                              <h6 class="title">Раздел</h6>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">asdf</a></li>
+                                    <li><a href="#">sdfsdf</a></li>
+                                    <li><a href="#">sdfsdf</a></li>
+                                    <li><a href="#">sfsfsdf</a></li>
+                                    <li><a href="#">sdfsfsdf</a></li>
+                                </ul>
+                        </div><!-- end col-3 -->
+                        <div class="col-6">
+                            <h6 class="title">Раздел</h6>
+                              <!-- <img src="{% static 'main\images\cat.jpg' %}" alt="123" style="width: 64px; height: 64px;"> -->
+                        </div><!-- end col-3 -->
+                    </div><!-- end row -->
               </div>
-              <div class="portfolio-menu mt-2 mb-4">
-                  <ul>
-                    <li class="btn btn-outline-dark active" data-filter="*">All</li>
-                    <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
-                    <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li>
-                    <li class="btn btn-outline-dark text" data-filter=".selfie">selfie</li>
-                  </ul>
+            </li>
+            <li class="has-megasubmenu">
+                <a class="dropdown-item" href="#"> Мониторы &raquo; </a>
+                <div class="megasubmenu dropdown-menu border-0 rounded ms-1 shadow" style="width: 500px; border-style: dotted;">
+                  <div class="row">
+                    <div class="col-5">
+                          <h6 class="title">Раздел</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#">111</a></li>
+                                <li><a href="#">111</a></li>
+                                <li><a href="#">111</a></li>
+                                <li><a href="#">11</a></li>
+                                <li><a href="#">1111</a></li>
+                            </ul>
+                    </div><!-- end col-3 -->
+                    <div class="col-6">
+                        <h6 class="title">Раздел</h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">111</a></li>
+                          <li><a href="#">111</a></li>
+                          <li><a href="#">111</a></li>
+                          <li><a href="#">11</a></li>
+                          <li><a href="#">1111</a></li>
+                      </ul>
+                    </div><!-- end col-3 -->
+                </div><!-- end row -->
               </div>
-              <div class="portfolio-item row">
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/pretty-girl-near-car_1157-16962.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/pretty-girl-near-car_1157-16962.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/blonde-tourist-taking-selfie_23-2147978899.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/blonde-tourist-taking-selfie_23-2147978899.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/cute-girls-oin-studio_1157-18211.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/cute-girls-oin-studio_1157-18211.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/stylish-pin-up-girls_1157-18451.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-pin-up-girls_1157-18451.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/stylish-pin-up-girl_1157-18940.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-pin-up-girl_1157-18940.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/digital-laptop-working-global-business-concept_53876-23438.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/digital-laptop-working-global-business-concept_53876-23438.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/set-digital-devices-screen-mockup_53876-76507.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/set-digital-devices-screen-mockup_53876-76507.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/young-brunette-woman-with-sunglasses-urban-background_1139-893.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/young-brunette-woman-with-sunglasses-urban-background_1139-893.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/laptop-digital-device-screen-mockup_53876-76509.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/laptop-digital-device-screen-mockup_53876-76509.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/young-woman-holding-pen-hand-thinking-while-writing-notebook_23-2148029424.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/young-woman-holding-pen-hand-thinking-while-writing-notebook_23-2148029424.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/female-fashion-concept_23-2147643598.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/female-fashion-concept_23-2147643598.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/girl-city_1157-16454.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/girl-city_1157-16454.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/elegant-lady-with-laptop_1157-16643.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/elegant-lady-with-laptop_1157-16643.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/laptop-mock-up-lateral-view_1310-199.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/laptop-mock-up-lateral-view_1310-199.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/portrait-young-woman_1303-10071.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/portrait-young-woman_1303-10071.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/beautiful-girl-near-wall_1157-16401.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/beautiful-girl-near-wall_1157-16401.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/woman-taking-photograph-her-boyfriend-enjoying-piggyback-ride-his-back_23-2147841613.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/woman-taking-photograph-her-boyfriend-enjoying-piggyback-ride-his-back_23-2147841613.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/girl-smiling-making-auto-photo-with-her-friends-around_1139-593.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/girl-smiling-making-auto-photo-with-her-friends-around_1139-593.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/multiracial-group-young-people-taking-selfie_1139-1032.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/multiracial-group-young-people-taking-selfie_1139-1032.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/laptop-wooden-table_53876-20635.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/laptop-wooden-table_53876-20635.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/business-woman-working-laptop_1388-67.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/business-woman-working-laptop_1388-67.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/group-people-holding-laptop-mockup-charity_23-2148069565.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/group-people-holding-laptop-mockup-charity_23-2148069565.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/portrait-young-cheerful-woman-headphones-sitting-stairs_1262-17488.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/portrait-young-cheerful-woman-headphones-sitting-stairs_1262-17488.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/celebration-concept-close-up-portrait-happy-young-beautiful-african-woman-black-t-shirt-smiling-with-colorful-party-balloon-yellow-pastel-studio-background_1258-934.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/celebration-concept-close-up-portrait-happy-young-beautiful-african-woman-black-t-shirt-smiling-with-colorful-party-balloon-yellow-pastel-studio-background_1258-934.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/pretty-woman-showing-arm-muscles_23-2148056021.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/pretty-woman-showing-arm-muscles_23-2148056021.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/blank-colorful-adhesive-notes-against-wooden-wall-with-office-stationeries-laptop_23-2148052717.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/blank-colorful-adhesive-notes-against-wooden-wall-with-office-stationeries-laptop_23-2148052717.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/happy-woman-having-video-call-using-laptop-office_23-2148056211.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/happy-woman-having-video-call-using-laptop-office_23-2148056211.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/laptop-mockup-table-with-plants_23-2147955548.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/laptop-mockup-table-with-plants_23-2147955548.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/blank-colorful-adhesive-notes-against-wooden-wall-with-office-stationeries-laptop_23-2148052717.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/blank-colorful-adhesive-notes-against-wooden-wall-with-office-stationeries-laptop_23-2148052717.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-psd/woman-using-laptop-smartphone_53876-76350.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-psd/woman-using-laptop-smartphone_53876-76350.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/attractive-young-woman-with-curly-hair-takes-selfie-posing-looking-camera_8353-6636.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/attractive-young-woman-with-curly-hair-takes-selfie-posing-looking-camera_8353-6636.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/young-couple-taking-selfie-mobile-phone-against-blue-background_23-2148056292.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/young-couple-taking-selfie-mobile-phone-against-blue-background_23-2148056292.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item lap col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/close-up-blonde-woman-sitting-sofa-using-laptop-with-blank-white-screen_23-2148028738.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/close-up-blonde-woman-sitting-sofa-using-laptop-with-blank-white-screen_23-2148028738.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/group-happy-friends-taking-selfie-cellphone_23-2147859575.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/group-happy-friends-taking-selfie-cellphone_23-2147859575.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/joyful-pretty-girl-with-curly-hair-takes-selfie-mobile-phone_8353-6635.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/joyful-pretty-girl-with-curly-hair-takes-selfie-mobile-phone_8353-6635.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/attractive-young-woman-with-curly-hair-takes-selfie-posing-looking-camera_8353-6636.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/attractive-young-woman-with-curly-hair-takes-selfie-posing-looking-camera_8353-6636.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/multiracial-group-young-people-taking-selfie_1139-1032.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/multiracial-group-young-people-taking-selfie_1139-1032.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/two-smiling-girls-take-selfie-their-phones-posing-with-lollipops_8353-5600.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/two-smiling-girls-take-selfie-their-phones-posing-with-lollipops_8353-5600.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/female-friends-sitting-car-hood-taking-self-portrait_23-2147855623.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/female-friends-sitting-car-hood-taking-self-portrait_23-2147855623.jpg" alt="">
-                    </a>
-                  </div>
-                  <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="https://image.freepik.com/free-photo/two-smiling-girls-take-selfie-their-phones-posing-with-lollipops_8353-5600.jpg" class="fancylight popup-btn" data-fancybox-group="light">
-                    <img class="img-fluid" src="https://image.freepik.com/free-photo/two-smiling-girls-take-selfie-their-phones-posing-with-lollipops_8353-5600.jpg" alt="">
-                    </a>
-                  </div>
+            </li>
+            <li class="has-megasubmenu">
+                <a class="dropdown-item" href="#"> Клавиатуры &raquo; </a>
+                <div class="megasubmenu dropdown-menu border-0 rounded ms-1 shadow" style="width: 500px; border-style: dotted;">
+                  <div class="row">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-5">
+                          <h6 class="title">Раздел</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#">asdf</a></li>
+                                <li><a href="#">sdfsdf</a></li>
+                                <li><a href="#">sdfsdf</a></li>
+                                <li><a href="#">sfsfsdf</a></li>
+                                <li><a href="#">sdfsfsdf</a></li>
+                            </ul>
+                    </div><!-- end col-3 -->
+                    <div class="col-6">
+                        <h6 class="title">Раздел</h6>
+                          <!-- <img src="{% static 'main\images\cat.jpg' %}" alt="123" style="width: 64px; height: 64px;"> -->
+                    </div><!-- end col-3 -->
+                </div><!-- end row -->
               </div>
-            </div>
-    </body>
-{% endblock %}
+            </li>
+            <li><a class="dropdown-item" href="{% url 'test' %}"> Наушники </a></li>
+            </ul>
+        </li>
+
+
+
+
+
+        
+        <li class="nav-item"> <a class="nav-link" href="{% url 'category_list' %}" style="color: rgb(255, 255, 255);">Категории </a> </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'brand_list' %}" style="color: white;"> Бренды </a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'test' %}" style="color: white"> Тест </a></li>
+      </ul>
+    
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255, 255, 255);"> 123654789 </a></li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Раздел админа </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow rounded mt-3">
+            <li><a class="dropdown-item" href="#"> Дашборд</a></li>
+            <li><a class="dropdown-item" href="#"> Воронка продаж </a></li>
+            </ul>
+        </li>
+
+        <!-- ============= Авторизация - Регистрация // ============== -->
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown" style="max-height: 48px;">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+              <img class="avatar" src="{% static 'main\images\avatar.png' %}" alt="123" style="width: 24px; height: 24px;">
+              <span style="color: rgb(255, 255, 255);">{{ user.first_name }}</span>
+            </a>
+            <ul class="dropdown-menu border-0 rounded mt-3 shadow">
+              <form action="{% url 'logoutuser' %}" method="POST">
+                {% csrf_token %}
+                <li><a class="dropdown-item text-black" href="#"> Личный кабинет </a></li>
+                <li><a class="dropdown-item text-black" href="#"> Сообщения </a></li>
+                <li><a class="dropdown-item text-black" href="#"> Избранное </a></li>
+                <li>
+                  <button type="submit" class="btn buttons border-0" style="font-size: 14px;">Выход</button>
+                </li>
+            </ul>
+          </li>
+        {% else %}
+              <li style="max-height: 48px;">
+                <a role="button" href="{% url 'loginuser' %}" class="btn buttons border-0" style="font-size: 14px;">
+                  <i class="fa-regular fa-xl fa-user" style="color: darkslategray;"></i>
+                </a>
+              </li>
+              </form>
+        {% endif %}
+        <!-- ============= Авторизация - Регистрация // ============== -->
+
+
+
+
+
+
+      </ul>
+      </div> <!-- navbar-collapse.// -->
+      </div> <!-- container-fluid.// -->
+    </nav>
+    <!-- ============= COMPONENT END// ============== -->
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  const slider = document.querySelector('.gallery');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', e => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', _ => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', _ => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const SCROLL_SPEED = 3;
+    const walk = (x - startX) * SCROLL_SPEED;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	window.addEventListener("resize", function() {
+		"use strict"; window.location.reload(); 
+	});
+
+
+	document.addEventListener("DOMContentLoaded", function(){
+        
+        /////// Prevent closing from click inside dropdown
+		document.querySelectorAll('.dropdown-menu').forEach(function(element){
+			element.addEventListener('click', function (e) {
+			  e.stopPropagation();
+			});
+		});
+
+		// make it as accordion for smaller screens
+		if (window.innerWidth < 992) {
+
+			// close all inner dropdowns when parent is closed
+			document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+				everydropdown.addEventListener('hidden.bs.dropdown', function () {
+					// after dropdown is hidden, then find all submenus
+					  this.querySelectorAll('.megasubmenu').forEach(function(everysubmenu){
+					  	// hide every submenu as well
+					  	everysubmenu.style.display = 'none';
+					  });
+				})
+			});
+
+			document.querySelectorAll('.has-megasubmenu a').forEach(function(element){
+				element.addEventListener('click', function (e) {
+		
+				  	let nextEl = this.nextElementSibling;
+				  	if(nextEl && nextEl.classList.contains('megasubmenu')) {	
+				  		// prevent opening link if link needs to open dropdown
+				  		e.preventDefault();
+
+				  		if(nextEl.style.display == 'block'){
+				  			nextEl.style.display = 'none';
+				  		} else {
+				  			nextEl.style.display = 'block';
+				  		}
+
+				  	}
+				});
+			})
+		}
+		// end if innerWidth
+	}); 
+	// DOMContentLoaded  end
+</script>
+
+
+
+</body>
+</html>

@@ -215,6 +215,13 @@ def gallery(request):
 
 
 
+def slider(request):
+  context = {
+      }
+  return render(request, 'main/slider.html', context)
+
+
+
 
 
 
