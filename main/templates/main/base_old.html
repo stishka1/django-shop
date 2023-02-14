@@ -1,0 +1,164 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+    <head>
+        <title>MyShop on Django!</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Всегда первым идет jquery, потом все кастомные скрипты-->
+		<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+		<!-- Шрифт Roboto, шрифт всегда должен быть перед подключением css файла -->
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet"> -->
+
+        <!-- Мой CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static '2.css' %}">
+
+		<!-- Мой файл javascript -->
+		<script type="text/javascript" src="{% static 'custom.js' %}"></script>
+
+          <!--FontAwesome CDN-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+		<script src="https://kit.fontawesome.com/25aa5b4562.js" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap 5-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+        <!-- MDB -->
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/> -->
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+
+		<!-- Отрытие картинки на детальной странице товара на максимум -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+    </head> 
+
+    <body>
+		<div class="main-container">
+			<nav class="navbar navbar-expand-lg rounded mb-1" style="background-color: #F8F9FA; color: #495057;">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{% url 'home' %}">Покупай-ка!</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNavDropdown">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="{% url 'test' %}" style="color: #3f3f3f;">Тест</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="{% url 'category_list' %}" style="color: #3f3f3f;">Категории</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="{% url 'brand_list' %}" style="color: #3f3f3f;">Бренды</a>
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link text-white" href="{% url 'product_list' %}" style="color: #3f3f3f;">Каталог</a>
+							</li> -->
+							<li class="nav-item dropdown" style="width: 400px;">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Каталог
+								</a>
+								<ul class="dropdown-menu" style="width: 400px;">
+									<div class="row">
+										<div class="col-md-6">
+												<li><a class="dropdown-item" href="{% url 'gallery' %}">Мегаменю</a></li>
+												<li><a class="dropdown-item" href="{% url 'slider' %}">Слайдер</a></li>
+												<li><a class="dropdown-item" href="#">Мобильные телефоны</a></li>
+												<li><a class="dropdown-item" href="#">Планшеты</a></li>
+												<li><a class="dropdown-item" href="#">Ноутбуки</a></li>
+												<li><a class="dropdown-item" href="#">Смарт-часы</a></li>
+												<li><a class="dropdown-item" href="#">Фитнес-браслеты</a></li>
+												<li><a class="dropdown-item" href="#">Наушники</a></li>
+												<li><a class="dropdown-item" href="#">Отпариватели</a></li>
+												<li><a class="dropdown-item" href="#">Пылесосы</a></li>
+												<li><a class="dropdown-item" href="#">Холодильники</a></li>
+												<li><a class="dropdown-item" href="#">Чайники</a></li>
+												<li><a class="dropdown-item" href="#">Микроволновки</a></li>
+												<li><a class="dropdown-item" href="#">Кофеварки</a></li>
+												<li><a class="dropdown-item" href="#">Гриль-печи</a></li>
+										</div>
+										<div class="col-md-6">
+											3
+										</div>
+									</div>
+								</ul>
+							  </li>
+						</ul>
+					</div>
+							{% if user.is_authenticated %}
+							<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+								<ul class="navbar-nav d-flex">
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+											{{ user.username }}
+											<!-- <figure class="figure">
+												<i class="fa-regular fa-xl fa-user ms-3" style="color: darkslategray;"></i>
+												<figcaption class="figure-caption text-center">&nbsp;&nbsp;{{ user.username }}</figcaption>
+											</figure> -->
+										</a>
+										<ul class="dropdown-menu border-0 shadow">
+											<form action="{% url 'logoutuser' %}" method="POST">
+												{% csrf_token %}
+												<li>
+													<a class="nav-link" href="#" style="font-size: 14px;">&nbsp;Личный кабинет</a>
+												</li>
+												<li>
+													<a class="nav-link" href="#" style="font-size: 14px;">&nbsp;Сообщения</a>
+												</li>
+												<li>
+													<a class="nav-link border-bottom" href="#" style="font-size: 14px;">&nbsp;Избранное</a>
+												</li>
+												<li>
+													<button type="submit" class="btn buttons border-0" style="font-size: 14px;">Выход</button>
+												</li>
+												{% else %}
+									
+												<li style="max-height: 48px;">
+													<a role="button" href="{% url 'loginuser' %}" class="btn buttons border-0" style="font-size: 14px;">
+														<i class="fa-regular fa-xl fa-user" style="color: darkslategray;"></i>
+														<!-- <figure class="figure">
+															<i class="fa-regular fa-xl fa-user" style="color: darkslategray;"></i>
+															<figcaption class="figure-caption text-center">Войти</figcaption>
+														</figure> -->
+													</a>
+												</li>
+											</form>
+										
+										</ul>
+									</li>
+								</ul>
+							</div>
+							{% endif %}
+				</div>
+			</nav>
+		</div>
+		
+
+    	{% block content %}
+
+
+    	{% endblock %}
+
+		<script>
+			const tooltips = document.querySelectorAll('.tt')
+			tooltips.forEach(t => {
+				new bootstrap.Tooltip(t)
+			})
+		</script>
+
+
+	</body>
+</html>

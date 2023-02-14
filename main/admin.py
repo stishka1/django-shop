@@ -7,8 +7,10 @@ class BannerAdmin(admin.ModelAdmin):
 admin.site.register(Banner, BannerAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'brand', 'sku', 'category', 'created', 'is_featured', 'in_stock', 'active']
+    list_display = ['title', 'brand', 'sku', 'category', 'created', 'is_featured', 'in_stock', 'active']
     list_editable = ['is_featured', 'in_stock', 'active']
+    search_fields = ['title', 'category']
+    list_filter = ['category']
     prepopulated_fields = {'slug': ('title',)} # автоматическое заполнение исходя из тайтла товара
 admin.site.register(Product, ProductAdmin)
 

@@ -10,3 +10,6 @@ admin.site.register(CartOrder, CartOrderAdmin)
 class OrderItemsAdmin(admin.ModelAdmin):
     list_display = ('order', 'invoice', 'item', 'image', 'qty', 'price', 'total')
 admin.site.register(OrderItems, OrderItemsAdmin)
+
+
+

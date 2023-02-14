@@ -1,4 +1,4 @@
-{% extends 'main/gallery.html' %}
+{% extends 'main/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -30,7 +30,7 @@
                         </div>
                         <div class="span mt-2">
                             {% csrf_token %}
-                            <a class="nav-link d-flex justify-content-end" href ="{% url 'signup' %}" style="font-size: 14px;">Регистрация</a>
+                            <a class="nav-link d-flex justify-content-end" href ="{% url 'users:signup' %}" style="font-size: 14px;">Регистрация</a>
                             <a class="nav-link d-flex justify-content-end" href ="#" style="font-size: 12px; font-style: italic;">Забыли пароль?</a>
                         </div>
                         <div class="container d-flex justify-content-center">
